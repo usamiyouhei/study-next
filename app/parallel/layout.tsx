@@ -1,6 +1,4 @@
-import React from "react";
-
-function ParallelLayout({
+export default function ParallelLayout({
   children,
   team,
   analytics,
@@ -12,7 +10,9 @@ function ParallelLayout({
   return (
     <div>
       <h1>Parallel Routes Page</h1>
+
       <div>{children}</div>
+
       <div style={{ display: "flex", gap: "20px" }}>
         <div style={{ border: "1px solid red" }}>{team}</div>
         <div style={{ border: "1px solid blue" }}>{analytics}</div>
@@ -20,5 +20,3 @@ function ParallelLayout({
     </div>
   );
 }
-
-export default ParallelLayout;
