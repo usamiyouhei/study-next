@@ -1,16 +1,21 @@
-"use client";
+// "use client";
 
-import { useEffect } from "react";
+type Post = {
+  id: number;
+  title: string;
+};
 
-export default function Home() {
-  useEffect(() => {
-    window.alert("Hello");
-  }, []);
-
+export default async function Home() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const posts: Post[] = await res.json();
   return (
     <div>
-      <h1>Hello World</h1>
-      <button onClick={() => alert("Clicked!")}>Click me!</button>
+      <h1>記事一覧</h1>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
