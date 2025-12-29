@@ -1,23 +1,16 @@
-"use client";
+// "use client";
 
-import { FormEvent } from "react";
+// import { FormEvent } from "react";
 
 export default function Home() {
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const name = form.get("name");
+  const createAction = async (formData: FormData) => {
+    "use server";
 
-    await fetch("/api/create", {
-      method: "POST",
-      headers: {
-        "Conyent-Type": "application/json",
-      },
-      body: JSON.stringify({ name }),
-    });
+    const name = formData.get("name");
+    console.log("ServerActionで実行されました", name);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form action={createAction}>
       <input type="text" name="name" />
       <button type="submit">送信</button>
     </form>
