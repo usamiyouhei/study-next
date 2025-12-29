@@ -1,6 +1,6 @@
 // "use client";
 
-import { Suspense } from "react";
+// import { Suspense } from "react";
 import SlowComponent from "./SlowComponent";
 
 // type Post = {
@@ -14,9 +14,9 @@ export default async function Home() {
   return (
     <div>
       <h1>メインコンテンツ(すぐに表示)</h1>
-      <Suspense fallback={<div>重いコンポーネントを読み込み中...</div>}>
-        <SlowComponent />
-      </Suspense>
+      {/* <Suspense fallback={<div>重いコンポーネントを読み込み中...</div>}> */}
+      <SlowComponent />
+      {/* </Suspense> */}
       {/* <h1>記事一覧</h1>
       <ul>
         {posts.map((post) => (
