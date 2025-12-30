@@ -2,17 +2,31 @@
 
 // import { FormEvent } from "react";
 
-export default function Home() {
-  const createAction = async (formData: FormData) => {
-    "use server";
+async function getHeavyData() {
+  "use cache";
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  return "重いデータの取得完了";
+}
 
-    const name = formData.get("name");
-    console.log("ServerActionで実行されました", name);
-  };
+export default async function Home() {
+  const data = await getHeavyData();
+  // const createAction = async (formData: FormData) => {
+  //   "use server";
+
+  //   const name = formData.get("name");
+  //   console.log("ServerActionで実行されました", name);
+  // };
+
+  // // fetch('hoge.com', {cache: 'no-store'})
+  // fetch("hoge.com", { cache: "force-cache" });
+
   return (
-    <form action={createAction}>
-      <input type="text" name="name" />
-      <button type="submit">送信</button>
-    </form>
+    <div>
+      <h1>{data}</h1>
+    </div>
+    // <form action={createAction}>
+    //   <input type="text" name="name" />
+    //   <button type="submit">送信</button>
+    // </form>
   );
 }
